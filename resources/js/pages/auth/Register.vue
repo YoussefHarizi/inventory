@@ -5,22 +5,22 @@
 			<h3 class="text-center">Sign Up</h3>
 			<div class="login-form">
 				<div class="form-group form-floating-label">
-					<input  id="fullname" name="fullname" type="text" class="form-control input-border-bottom" required>
+					<input  id="fullname" name="fullname" type="text" class="form-control input-border-bottom" v-model="form.name">
 					<label for="fullname" class="placeholder">Fullname</label>
 				</div>
 				<div class="form-group form-floating-label">
-					<input  id="email" name="email" type="email" class="form-control input-border-bottom" required>
+					<input  id="email" name="email" type="email" class="form-control input-border-bottom" v-model="form.email">
 					<label for="email" class="placeholder">Email</label>
 				</div>
 				<div class="form-group form-floating-label">
-					<input  id="passwordsignin" name="passwordsignin" type="password" class="form-control input-border-bottom" required>
+					<input  id="passwordsignin" name="passwordsignin" type="password" class="form-control input-border-bottom" v-model="form.password">
 					<label for="passwordsignin" class="placeholder">Password</label>
 					<div class="show-password">
 						<i class="flaticon-interface"></i>
 					</div>
 				</div>
 				<div class="form-group form-floating-label">
-					<input  id="confirmpassword" name="confirmpassword" type="password" class="form-control input-border-bottom" required>
+					<input  id="confirmpassword" name="confirmpassword" type="password" class="form-control input-border-bottom" v-model="form.password_confirmation">
 					<label for="confirmpassword" class="placeholder">Confirm Password</label>
 					<div class="show-password">
 						<i class="flaticon-interface"></i>
@@ -34,7 +34,7 @@
 				</div>
 				<div class="form-action">
 					<a href="#" id="show-signin" class="btn btn-danger btn-rounded btn-login mr-3">Cancel</a>
-					<a href="#" class="btn btn-primary btn-rounded btn-login">Sign Up</a>
+					<button @click.prevent="register()" class="btn btn-primary btn-rounded btn-login">Sign Up</button>
 				</div>
 			</div>
 		</div>
@@ -44,6 +44,45 @@
 
 <script>
 export default {
+	created(){
+      if (User.loggedIn()) {
+        this.$router.push({name: 'home'})
+      }
+    },
+	data(){
+		return{
+			form:{
+				name:null,
+				email:null,
+				password:null,
+				password_confirmation:null,
+			},
+			errors:{}
+		}
+	},
+	methods:{
+		register(){
+			axios.post("api/auth/register",this.form)
+			.then(res => {
+				console.log(res)
+				User.responseAfterLogin(res);
+				Toast.fire({
+				icon: 'success',
+				title: 'Signed in successfully'
+				})
+				this.$router.push({name:'home'})
+			})
+			.catch(err => {
+				 
+				Toast.fire({
+				icon: 'warning',
+				title: 'Failed to sign in'
+				})
+				this.errors=err.response.data;
+				console.log(this.errors);
+			})
+		}
+	}
 
 }
 </script>

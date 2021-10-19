@@ -26,6 +26,12 @@ const router = new VueRouter({
             path: '/home',
             component: Home,
             name: 'home'
+        },
+        {
+            path: '/logout',
+            name: 'logout',
+            component: () => import('../pages/auth/Logout.vue'),
+            
         }
     ]
 })

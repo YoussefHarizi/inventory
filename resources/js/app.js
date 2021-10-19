@@ -1,7 +1,12 @@
 
 
 
-require('./bootstrap');
+//require('./bootstrap');
+window.axios = require('axios');
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+
 import Vue from 'vue'
 import router from './routes/index'
 
@@ -42,7 +47,7 @@ const Toast = Swal.mixin({
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('app-layout', require('./components/layouts/AppLayout.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
