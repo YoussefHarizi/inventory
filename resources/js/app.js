@@ -13,6 +13,14 @@ import router from './routes/index'
 import User from './Helpers/User'
 window.User=User
 
+//vue-noty
+import VueNoty from 'vuejs-noty'
+
+Vue.use(VueNoty)
+//***** */
+
+
+
 //sweet alert2
 import Swal from 'sweetalert2'
 const Toast = Swal.mixin({

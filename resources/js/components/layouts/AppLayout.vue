@@ -1,27 +1,17 @@
 <template>
-  <div>
-    <the-header />
-    <the-sidebar />
-    <div class="main-panel">
-      <div class="content">
-        <slot />
-      </div>
-    </div>
-    
-  </div>
+  <component  :is="layout">
+   <slot/>
+  </component>
 </template>
 
 <script>
-import TheHeader from "../layouts/TheHeader";
-import TheSidebar from "../layouts/TheSidebar";
-
+const defaultLayout = "DefaultLayout";
 export default {
-  components: {
-    TheHeader,
-    TheSidebar,
-  },
-};
+  computed: {
+    layout() {
+      let layout = this.$route.meta.layout || defaultLayout;
+      return () => import(`./${layout}.vue`);
+    }
+  }
+}
 </script>
-
-<style>
-</style>

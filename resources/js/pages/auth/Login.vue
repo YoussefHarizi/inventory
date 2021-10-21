@@ -31,7 +31,7 @@
 				</div>
 				<div class="login-account">
 					<span class="msg">Don't have an account yet ?</span>
-					<a href="#" id="show-signup" class="link">Sign Up</a>
+					<router-link :to="{name:'register'}" class="link">Sign Up</router-link>
 				</div>
 			</form>
 		</div>

@@ -35,7 +35,10 @@
 <body>
 	<div id="app">
 		<div class="wrapper">
-		<router-view></router-view>
+		<app-layout>
+   
+   		<router-view></router-view>
+ 		</app-layout>
 		
 		</div>
 	</div>
@@ -85,7 +88,7 @@
 
 	<!-- Azzara JS -->
 	<script src="{{asset('docs/js/ready.min.js')}}"></script>
-	<script src="{{asset('js/app.js')}}"></script>
+	<script src="{{mix('js/app.js')}}"></script>
 
 
 	<!-- Azzara DEMO methods, don't include it in your project! -->

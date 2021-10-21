@@ -15,22 +15,49 @@ const router = new VueRouter({
         {
             path: '/',
             component: Login,
-            name: 'login'
+            name: 'login',
+            meta:{
+                layout:'AuthLayout',
+            }
         },
         {
             path: '/register',
             component: Register,
-            name: 'register'
+            name: 'register',
+            meta:{
+                layout:'AuthLayout',
+            }
         },
         {
             path: '/home',
             component: Home,
-            name: 'home'
+            name: 'home',
+            meta:{
+                layout:'DashboardLayout',
+            }
         },
         {
             path: '/logout',
             name: 'logout',
             component: () => import('../pages/auth/Logout.vue'),
+            
+        },
+        {
+            path: '/new_employee',
+            name: 'newemp',
+            component: () => import('../pages/employee/CreateEmployee.vue'),
+            meta:{
+                layout:'DashboardLayout',
+            }
+            
+        },
+        {
+            path: '/all_employee',
+            name: 'allemp',
+            component: () => import('../pages/employee/Index.vue'),
+            meta:{
+                layout:'DashboardLayout',
+            }
             
         }
     ]

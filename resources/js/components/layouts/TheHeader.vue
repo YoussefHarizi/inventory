@@ -194,7 +194,7 @@
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">Account Setting</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Logout</a>
+										<router-link class="dropdown-item" :to="{name:'logout'}">Logout</router-link>  
 									</li>
 								</ul>
 							</li>
