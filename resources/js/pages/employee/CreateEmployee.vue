@@ -40,7 +40,7 @@
                       All Employee
                     </router-link>
                   </div>
-                  <form id="exampleValidation">
+                  <form id="">
                     <div class="card-body">
                       <div class="form-group form-show-validation row">
                         <label
@@ -52,10 +52,10 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="name"
+                            v-model="form.name"
                             name="name"
                             placeholder="Enter Username"
-                            required=""
+                           
                           />
                         </div>
                       </div>
@@ -71,9 +71,9 @@
                           <input
                             type="email"
                             class="form-control"
-                            id="email"
+                            v-model="form.email"
                             placeholder="Enter Email"
-                            required=""
+                           
                           />
                         </div>
                       </div>
@@ -87,7 +87,7 @@
                         <div class="col-lg-4 col-md-9 col-sm-8">
                           <div class="input-group">
                             <div class="input-group-prepend">
-                              <span class="input-group-text" id="username-addon"
+                              <span class="input-group-text" 
                                 ><i class="fas fa-mobile-alt"></i
                               ></span>
                             </div>
@@ -96,10 +96,8 @@
                               class="form-control"
                               placeholder="Phone number"
                               aria-label="username"
-                              aria-describedby="phone-addon"
-                              id="phone"
-                              name="phone"
-                              required=""
+                              v-model="form.phone"
+                            
                             />
                           </div>
                         </div>
@@ -114,10 +112,10 @@
                           <input
                             type="number"
                             class="form-control"
-                            id="salary"
+                           v-model="form.salary"
                             name="salary"
                             placeholder="Enter salary"
-                            required=""
+                           
                           />
                         </div>
                       </div>
@@ -132,9 +130,9 @@
                             type="text"
                             class="form-control"
                             id="Adress"
-                            name="Adress"
+                          v-model="form.adress"
                             placeholder="Enter Adress"
-                            required=""
+                           
                           />
                         </div>
                       </div>
@@ -148,7 +146,7 @@
                           <input
                             type="date"
                             class="form-control"
-                            id="date"
+                           v-model="form.joining_date"
                             name="date"
                           />
                         </div>
@@ -173,9 +171,9 @@
                               type="file"
                               class="form-control form-control-file"
                               id="uploadImg2"
-                              name="uploadImg2"
+                             
                               accept="image/*"
-                              required=""
+                             
                             />
                             <label
                               for="uploadImg2"
@@ -197,6 +195,7 @@
                             class="btn btn-success"
                             type="submit"
                             value="Validate"
+                            @click="addEmployee()"
                           />
                           <button class="btn btn-danger">Cancel</button>
                         </div>
@@ -215,6 +214,25 @@
 
 <script>
 export default {
+  created(){
+      if (!User.loggedIn()) {
+        this.$router.push({name: 'login'})
+      }
+    },
+    data(){
+    return {
+      form:{
+        name: null,
+        email: null,
+        phone: null,
+        sallery: null,
+        address: null,
+        photo: null,
+        joining_date: null
+      },
+      errors:{}
+    }
+  },
   methods: {},
 };
 </script>

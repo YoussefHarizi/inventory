@@ -225,8 +225,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  created: function created() {
+    if (!User.loggedIn()) {
+      this.$router.push({
+        name: 'login'
+      });
+    }
+  },
+  data: function data() {
+    return {
+      form: {
+        name: null,
+        email: null,
+        phone: null,
+        sallery: null,
+        address: null,
+        photo: null,
+        joining_date: null
+      },
+      errors: {}
+    };
+  },
   methods: {}
 });
 
@@ -379,7 +399,7 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _c("form", { attrs: { id: "exampleValidation" } }, [
+                    _c("form", { attrs: { id: "" } }, [
                       _c("div", { staticClass: "card-body" }, [
                         _c(
                           "div",
@@ -407,13 +427,32 @@ var render = function() {
                               { staticClass: "col-lg-4 col-md-9 col-sm-8" },
                               [
                                 _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.name,
+                                      expression: "form.name"
+                                    }
+                                  ],
                                   staticClass: "form-control",
                                   attrs: {
                                     type: "text",
-                                    id: "name",
                                     name: "name",
-                                    placeholder: "Enter Username",
-                                    required: ""
+                                    placeholder: "Enter Username"
+                                  },
+                                  domProps: { value: _vm.form.name },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "name",
+                                        $event.target.value
+                                      )
+                                    }
                                   }
                                 })
                               ]
@@ -449,12 +488,31 @@ var render = function() {
                               { staticClass: "col-lg-4 col-md-9 col-sm-8" },
                               [
                                 _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.email,
+                                      expression: "form.email"
+                                    }
+                                  ],
                                   staticClass: "form-control",
                                   attrs: {
                                     type: "email",
-                                    id: "email",
-                                    placeholder: "Enter Email",
-                                    required: ""
+                                    placeholder: "Enter Email"
+                                  },
+                                  domProps: { value: _vm.form.email },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "email",
+                                        $event.target.value
+                                      )
+                                    }
                                   }
                                 })
                               ]
@@ -496,10 +554,7 @@ var render = function() {
                                     [
                                       _c(
                                         "span",
-                                        {
-                                          staticClass: "input-group-text",
-                                          attrs: { id: "username-addon" }
-                                        },
+                                        { staticClass: "input-group-text" },
                                         [
                                           _c("i", {
                                             staticClass: "fas fa-mobile-alt"
@@ -510,15 +565,32 @@ var render = function() {
                                   ),
                                   _vm._v(" "),
                                   _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.phone,
+                                        expression: "form.phone"
+                                      }
+                                    ],
                                     staticClass: "form-control",
                                     attrs: {
                                       type: "text",
                                       placeholder: "Phone number",
-                                      "aria-label": "username",
-                                      "aria-describedby": "phone-addon",
-                                      id: "phone",
-                                      name: "phone",
-                                      required: ""
+                                      "aria-label": "username"
+                                    },
+                                    domProps: { value: _vm.form.phone },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.form,
+                                          "phone",
+                                          $event.target.value
+                                        )
+                                      }
                                     }
                                   })
                                 ])
@@ -553,13 +625,32 @@ var render = function() {
                               { staticClass: "col-lg-4 col-md-9 col-sm-8" },
                               [
                                 _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.salary,
+                                      expression: "form.salary"
+                                    }
+                                  ],
                                   staticClass: "form-control",
                                   attrs: {
                                     type: "number",
-                                    id: "salary",
                                     name: "salary",
-                                    placeholder: "Enter salary",
-                                    required: ""
+                                    placeholder: "Enter salary"
+                                  },
+                                  domProps: { value: _vm.form.salary },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "salary",
+                                        $event.target.value
+                                      )
+                                    }
                                   }
                                 })
                               ]
@@ -593,13 +684,32 @@ var render = function() {
                               { staticClass: "col-lg-4 col-md-9 col-sm-8" },
                               [
                                 _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.adress,
+                                      expression: "form.adress"
+                                    }
+                                  ],
                                   staticClass: "form-control",
                                   attrs: {
                                     type: "text",
                                     id: "Adress",
-                                    name: "Adress",
-                                    placeholder: "Enter Adress",
-                                    required: ""
+                                    placeholder: "Enter Adress"
+                                  },
+                                  domProps: { value: _vm.form.adress },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "adress",
+                                        $event.target.value
+                                      )
+                                    }
                                   }
                                 })
                               ]
@@ -628,11 +738,28 @@ var render = function() {
                               { staticClass: "col-lg-4 col-md-9 col-sm-8" },
                               [
                                 _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.joining_date,
+                                      expression: "form.joining_date"
+                                    }
+                                  ],
                                   staticClass: "form-control",
-                                  attrs: {
-                                    type: "date",
-                                    id: "date",
-                                    name: "date"
+                                  attrs: { type: "date", name: "date" },
+                                  domProps: { value: _vm.form.joining_date },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "joining_date",
+                                        $event.target.value
+                                      )
+                                    }
                                   }
                                 })
                               ]
@@ -689,9 +816,7 @@ var render = function() {
                                       attrs: {
                                         type: "file",
                                         id: "uploadImg2",
-                                        name: "uploadImg2",
-                                        accept: "image/*",
-                                        required: ""
+                                        accept: "image/*"
                                       }
                                     }),
                                     _vm._v(" "),
@@ -730,7 +855,12 @@ var render = function() {
                           _c("div", { staticClass: "col-md-12" }, [
                             _c("input", {
                               staticClass: "btn btn-success",
-                              attrs: { type: "submit", value: "Validate" }
+                              attrs: { type: "submit", value: "Validate" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.addEmployee()
+                                }
+                              }
                             }),
                             _vm._v(" "),
                             _c("button", { staticClass: "btn btn-danger" }, [
